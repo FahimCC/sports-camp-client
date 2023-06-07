@@ -5,11 +5,14 @@ import logo from '../../components/Logo';
 import useTheme from '../../hooks/useTheme';
 
 const Navbar = () => {
-	const [theme, setTheme] = useState(true);
+	const [theme, setTheme] = useState();
 
+	const handleThemeChange = event => {
+		setTheme(event.target.checked);
+	};
 	useTheme(theme);
-	const user = true;
 
+	const user = false;
 	const navigationBar = (
 		<>
 			<li>
@@ -24,7 +27,7 @@ const Navbar = () => {
 		</>
 	);
 	return (
-		<div className='shadow-lg'>
+		<div className='border-b border-second'>
 			<div className='container'>
 				<div className='navbar'>
 					<div className='navbar-start '>
@@ -66,14 +69,17 @@ const Navbar = () => {
 					</div>
 					<div className='navbar-end'>
 						{!user ? (
-							<Link className='text-sm md:text-base px-2 py-1 md:px-4 md:py-2 outline outline-primary squeeze hover:outline-secondary rounded-lg'>
+							<Link
+								to='/login'
+								className='text-sm md:text-lg font-semibold px-2 py-1 md:px-4 md:py-2 outline outline-primary squeeze hover:outline-secondary rounded-lg'
+							>
 								Login
 							</Link>
 						) : (
 							<>
 								<label className='swap swap-rotate md:pr-2 text-lg md:text-2xl'>
 									{/* this hidden checkbox controls the state */}
-									<input onClick={() => setTheme(!theme)} type='checkbox' />
+									<input onChange={handleThemeChange} type='checkbox' />
 
 									<BsSun className='swap-on' />
 									<BsMoon className='swap-off' />

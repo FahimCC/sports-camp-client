@@ -1,10 +1,11 @@
 import useTitle from '../../hooks/useTitle';
+import Slider from './Slider';
 
 const Home = () => {
 	useTitle('Home');
 	return (
 		<div>
-			<h1>Home</h1>
+			<Slider />
 		</div>
 	);
 };

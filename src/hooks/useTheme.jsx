@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
 
-const useTheme = theme => {
+const useTheme = isTheme => {
 	useEffect(() => {
-		theme
-			? document.querySelector('html').setAttribute('data-theme', 'lemonade')
-			: document.querySelector('html').setAttribute('data-theme', 'forest');
-	}, [theme]);
+		const html = document.querySelector('html');
+		if (!isTheme) {
+			html.setAttribute('data-theme', 'lemonade');
+			localStorage.setItem('data-theme', 'lemonade');
+		} else {
+			html.setAttribute('data-theme', 'forest');
+			localStorage.setItem('data-theme', 'forest');
+		}
+	}, [isTheme]);
 };
 export default useTheme;

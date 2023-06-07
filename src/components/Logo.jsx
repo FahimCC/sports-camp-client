@@ -1,11 +1,6 @@
-import { Link } from 'react-router-dom';
-
 const Logo = (
 	<>
-		<Link
-			to='/'
-			className='btn btn-ghost normal-case text-xl font-semibold mt-2 font-bubblegum hover:bg-transparent'
-		>
+		<div className='btn btn-ghost normal-case text-xl font-semibold mt-2 font-bubblegum hover:bg-transparent'>
 			Sports
 			<svg
 				className='-mt-4 -mx-4'
@@ -24,7 +19,7 @@ const Logo = (
 				<path d='M10.5 11h2.5l-1.5 5'></path>
 			</svg>
 			Camp
-		</Link>
+		</div>
 	</>
 );
 

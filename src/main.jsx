@@ -6,7 +6,7 @@ import router from './routes/Routes.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<div className='font-inter'>
+		<div className=' font-inter'>
 			<RouterProvider router={router} />
 		</div>
 	</React.StrictMode>

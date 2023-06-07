@@ -4,7 +4,7 @@ import Error from '../../assets/Error.json';
 
 const ErrorPage = () => {
 	const { status, error } = useRouteError();
-	console.log(error);
+	console.log('Error :', error);
 	return (
 		<div className='flex flex-col justify-center items-center'>
 			<Lottie
@@ -12,8 +12,10 @@ const ErrorPage = () => {
 				animationData={Error}
 				loop={true}
 			/>
-			<h2 className='text-4xl md:text-8xl font-bold '>{status}</h2>
-			<h4 className='text-xl font-semibold my-3'>{error.message}</h4>
+			<h2 className='text-4xl md:text-8xl font-bold '>{status || '404'}</h2>
+			<h4 className='text-xl font-semibold my-3'>
+				{error?.message || 'Something Happen...'}
+			</h4>
 			<Link to='/'>
 				<button className='btn btn-primary'>Back to home</button>
 			</Link>

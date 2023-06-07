@@ -11,6 +11,7 @@ export default {
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
 				cinzel: ['Cinzel', 'serif'],
+				bubblegum: ['Bubblegum Sans', 'cursive'],
 			},
 		},
 		container: {
@@ -18,7 +19,7 @@ export default {
 			padding: {
 				DEFAULT: '1rem',
 				md: '3rem',
-				lg: '6rem',
+				lg: '4rem',
 				xl: '6rem',
 				'2xl': '6rem',
 			},

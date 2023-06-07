@@ -68,6 +68,13 @@ const Navbar = () => {
 						</ul>
 					</div>
 					<div className='navbar-end'>
+						<label className='swap swap-rotate md:pr-2 text-lg md:text-2xl'>
+							{/* this hidden checkbox controls the state */}
+							<input onChange={handleThemeChange} type='checkbox' />
+
+							<BsSun className='swap-on' />
+							<BsMoon className='swap-off' />
+						</label>
 						{!user ? (
 							<Link
 								to='/login'
@@ -77,13 +84,6 @@ const Navbar = () => {
 							</Link>
 						) : (
 							<>
-								<label className='swap swap-rotate md:pr-2 text-lg md:text-2xl'>
-									{/* this hidden checkbox controls the state */}
-									<input onChange={handleThemeChange} type='checkbox' />
-
-									<BsSun className='swap-on' />
-									<BsMoon className='swap-off' />
-								</label>
 								<div className='dropdown dropdown-end'>
 									<label
 										tabIndex={0}

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const PopularClasses = () => {
 	return (
-		<div className='container my-20'>
+		<div className='container my-28'>
 			<div className='w-fit mx-auto'>
 				<h1 className='text-2xl md:text-4xl border-0 border-b-8 border-primary border-double clip font-semibold'>
 					Popular Classes
@@ -23,7 +23,7 @@ const PopularClasses = () => {
 				</Link>
 				<Link className='relative  squeeze'>
 					<img
-						src='https://images.pexels.com/photos/3718433/pexels-photo-3718433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+						src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 						className='rounded-lg object-cover w-full h-72'
 						alt=''
 					/>

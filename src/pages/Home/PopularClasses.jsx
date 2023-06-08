@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const PopularClasses = () => {
 	return (
-		<div className='container my-28'>
+		<div className='container my-36'>
 			<div className='w-fit mx-auto'>
 				<h1 className='text-2xl md:text-4xl border-0 border-b-8 border-primary border-double clip font-semibold'>
 					Popular Classes

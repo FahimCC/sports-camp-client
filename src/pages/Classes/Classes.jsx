@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 const Classes = () => {
 	return (
-		<div className='container my-20'>
+		<div className='container my-28'>
 			<div className='w-fit mx-auto'>
-				<h1 className='text-2xl md:text-4xl border-0 border-b-8 border-primary border-double clip font-semibold'>
-					Popular Classes
+				<h1 className='text-2xl md:text-4xl border-0 border-b-4 border-primary border-double clip font-semibold'>
+					Classes
 				</h1>
 			</div>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-10'>

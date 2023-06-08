@@ -1,4 +1,5 @@
 import useTitle from '../../hooks/useTitle';
+import PopularClasses from './PopularClasses';
 import Slider from './Slider';
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
 	return (
 		<div>
 			<Slider />
+			<PopularClasses />
 		</div>
 	);
 };

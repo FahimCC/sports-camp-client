@@ -8,5 +8,5 @@
 	@apply transform active:scale-90 transition-transform;
 }
 .clip {
-	@apply bg-clip-text text-transparent bg-gradient-to-r from-first via-third to-second;
+	@apply bg-clip-text text-transparent bg-gradient-to-r from-first via-[#1db9ac] to-second;
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import google from '../../assets/google.png';
 import login from '../../assets/login.svg';
+import SocialLogin from '../../components/SocialLogin';
 
 const Login = () => {
 	const [togglePassword, setTogglePassword] = useState(false);
@@ -17,7 +17,7 @@ const Login = () => {
 
 	return (
 		<div className='hero my-20'>
-			<div className='hero-content flex-col lg:flex-row-reverse gap-20'>
+			<div className='hero-content flex-col lg:flex-row gap-20'>
 				<figure className='max-w-xl'>
 					<img src={login} alt='' />
 				</figure>
@@ -35,11 +35,8 @@ const Login = () => {
 								className='input input-bordered'
 							/>
 							{errors.email?.type === 'required' && (
-								<small className='text-error mt-1'>Email is required</small>
-							)}
-							{errors.email?.type === 'pattern' && (
 								<small className='text-error mt-1 text-xs'>
-									Provide a valid email address.
+									Email is required
 								</small>
 							)}
 						</div>
@@ -94,8 +91,11 @@ const Login = () => {
 								className='input input-bordered'
 							/>
 							{errors.password?.type === 'required' && (
-								<small className='text-error mt-1'>Password is required</small>
+								<small className='text-error mt-1 text-xs'>
+									Password is required
+								</small>
 							)}
+							
 						</div>
 						<div className='form-control mt-6'>
 							<button type='submit' className='btn bg-first hover:bg-second'>
@@ -103,14 +103,12 @@ const Login = () => {
 							</button>
 						</div>
 					</form>
-					<div className='divider px-8'>OR</div>
-					<Link className='border-2 mt-2 mx-8 h-10 flex justify-center items-center px-3 py-1 rounded-lg squeeze'>
-						<img className='w-11 h-8' src={google} alt='' />
-						<span className='-ml-1'>Continue with Google</span>
-					</Link>
+					<SocialLogin />
 					<p className='text-center my-4'>
 						Don't have an account?
-						<Link className='text-primary hover:underline pl-2'>Register</Link>
+						<Link to='/register' className='text-primary hover:underline pl-2'>
+							Register
+						</Link>
 					</p>
 				</div>
 			</div>

@@ -19,10 +19,10 @@ const Navbar = () => {
 				<Link to='/'>Home</Link>
 			</li>
 			<li>
-				<Link to='/'>Instructors</Link>
+				<Link to='/instructor'>Instructors</Link>
 			</li>
 			<li>
-				<Link to='/'>Classes</Link>
+				<Link to='/classes'>Classes</Link>
 			</li>
 		</>
 	);
@@ -32,7 +32,7 @@ const Navbar = () => {
 				<div className='navbar'>
 					<div className='navbar-start '>
 						<div className='dropdown'>
-							<label tabIndex={0} className=' -ml-3 btn btn-ghost lg:hidden '>
+							<label tabIndex={0} className=' -ml-6 btn btn-ghost lg:hidden '>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									className='h-5 w-5'
@@ -68,7 +68,7 @@ const Navbar = () => {
 						</ul>
 					</div>
 					<div className='navbar-end'>
-						<label className='swap swap-rotate md:pr-2 text-lg md:text-2xl'>
+						<label className='swap swap-rotate pr-2 text-lg md:text-2xl'>
 							{/* this hidden checkbox controls the state */}
 							<input onChange={handleThemeChange} type='checkbox' />
 

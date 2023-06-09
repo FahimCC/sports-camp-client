@@ -10,7 +10,6 @@ const Register = () => {
 	useTitle('Register');
 	const { createUser, logOut, updateUserProfile } = useUser();
 	const navigate = useNavigate();
-
 	const {
 		register,
 		handleSubmit,

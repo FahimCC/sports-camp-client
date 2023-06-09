@@ -1,17 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import login from '../../assets/login.svg';
 import SocialLogin from '../../components/SocialLogin';
 import useUser from '../../hooks/UseUser';
 import useTitle from '../../hooks/useTitle';
-import Swal from 'sweetalert2';
 
 const Login = () => {
 	useTitle('Login');
 	const { signIn } = useUser();
+
+	const location = useLocation();
 	const navigate = useNavigate();
+
+	const from = location?.state?.from?.pathname || '/';
+
 	const [togglePassword, setTogglePassword] = useState(false);
 	const {
 		register,
@@ -31,7 +36,7 @@ const Login = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
-				navigate('/', { replace: true });
+				navigate(from, { replace: true });
 			})
 			.catch(error => console.log(error));
 	};

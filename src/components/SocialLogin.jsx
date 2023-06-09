@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import google from '../assets/google.png';
 import useUser from '../hooks/UseUser';
 
-const SocialLogin = () => {
+const SocialLogin = ({ from }) => {
 	const navigate = useNavigate();
 	const { googleSignIn } = useUser();
 
@@ -19,7 +19,7 @@ const SocialLogin = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
-				navigate('/', { replace: true });
+				navigate(from, { replace: true });
 			})
 			.catch(error => console.log(error));
 	};

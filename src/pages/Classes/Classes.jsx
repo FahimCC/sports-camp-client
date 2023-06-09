@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Classes = () => {
 	return (
-		<div className='container my-28'>
+		<div className='container my-14'>
 			<div className='w-fit mx-auto'>
 				<h1 className='text-2xl md:text-4xl border-0 border-b-4 border-primary border-double clip font-semibold'>
 					Classes

@@ -1,6 +1,6 @@
-const Logo = (
-	<>
-		<div className='btn btn-ghost normal-case text-xl font-semibold mt-2 font-bubblegum hover:bg-transparent'>
+const Logo = () => {
+	return (
+		<div className='btn btn-ghost normal-case text-xl font-semibold mt-2 font-bubblegum hover:bg-transparent bg-transparent'>
 			Sports
 			<svg
 				className='-mt-4 -mx-4'
@@ -20,7 +20,6 @@ const Logo = (
 			</svg>
 			Camp
 		</div>
-	</>
-);
-
+	);
+};
 export default Logo;

@@ -1,11 +1,11 @@
 import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import logo from '../../components/Logo';
+import Logo from '../../components/Logo';
 
 const Footer = () => {
 	return (
 		<footer className='space-y-5 flex flex-col justify-center items-center py-5   border-t border-second'>
-			<div>{logo}</div>
+			<Logo />
 			<div className='font-medium flex flex-col items-center'>
 				<p className='flex gap-2 text-center items-center'>
 					<BsFillTelephoneFill className='text-second' />{' '}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import logo from '../../components/Logo';
+import Logo from '../../components/Logo';
 import useTheme from '../../hooks/useTheme';
 
 const Navbar = () => {
@@ -15,14 +15,17 @@ const Navbar = () => {
 	const user = false;
 	const navigationBar = (
 		<>
-			<li>
+			<li className=' hover:text-primary'>
 				<Link to='/'>Home</Link>
 			</li>
-			<li>
+			<li className=' hover:text-primary'>
 				<Link to='/instructor'>Instructors</Link>
 			</li>
-			<li>
+			<li className=' hover:text-primary'>
 				<Link to='/classes'>Classes</Link>
+			</li>
+			<li className=' hover:text-primary'>
+				<Link to='/dashboard'>Dashboard</Link>
 			</li>
 		</>
 	);
@@ -56,11 +59,11 @@ const Navbar = () => {
 							</ul>
 						</div>
 						<Link to='/' className='hidden lg:block'>
-							{logo}
+							<Logo />
 						</Link>
 					</div>
 					<Link to='/' className='lg:hidden block navbar-center'>
-						{logo}
+						<Logo />
 					</Link>
 					<div className='navbar-center hidden lg:flex '>
 						<ul className='menu menu-horizontal px-1 text-lg font-semibold'>

@@ -1,13 +1,29 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Classes = () => {
 	return (
 		<div className='container my-14'>
-			<div className='w-fit mx-auto'>
+			<motion.div
+				className='w-fit mx-auto'
+				animate={{
+					x: 0,
+					y: 0,
+					scale: 1.3,
+					rotate: 0,
+				}}
+				transition={{
+					duration: 2,
+					ease: 'easeInOut',
+					times: [0, 0.2, 0.5, 0.8, 1],
+					repeat: Infinity,
+					repeatDelay: 1,
+				}}
+			>
 				<h1 className='text-2xl md:text-4xl border-0 border-b-4 border-primary border-double clip font-semibold'>
 					Classes
 				</h1>
-			</div>
+			</motion.div>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-10'>
 				<Link className='rounded-lg relative shadow-2xl shadow-primary'>
 					<img

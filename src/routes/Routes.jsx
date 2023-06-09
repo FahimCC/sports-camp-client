@@ -1,8 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import MyEnrolledClasses from '../Dashboard/MyEnrolledClasses';
-import MySelectedClasses from '../Dashboard/MySelectedClasses';
-import PaymentHistory from '../Dashboard/PaymentHistory';
+import ManageClasses from '../Dashboard/Admin/ManageClasses';
+import ManageUsers from '../Dashboard/Admin/ManageUsers';
+import AddClass from '../Dashboard/Instructor/AddClass';
+import MyClasses from '../Dashboard/Instructor/MyClasses';
 import Profile from '../Dashboard/Profile';
+import MyEnrolledClasses from '../Dashboard/Student/MyEnrolledClasses';
+import MySelectedClasses from '../Dashboard/Student/MySelectedClasses';
+import PaymentHistory from '../Dashboard/Student/PaymentHistory';
+import ErrorPage from '../components/ErrorPage';
 import Dashboard from '../layouts/Dashboard';
 import Main from '../layouts/Main';
 import Classes from '../pages/Classes/Classes';
@@ -10,7 +15,6 @@ import Home from '../pages/Home/Home';
 import Instructor from '../pages/Instructors/Instructors';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
-import ErrorPage from '../pages/Shared/ErrorPage';
 
 const router = createBrowserRouter([
 	{
@@ -60,6 +64,22 @@ const router = createBrowserRouter([
 			{
 				path: 'payment-history',
 				element: <PaymentHistory />,
+			},
+			{
+				path: 'add-class',
+				element: <AddClass />,
+			},
+			{
+				path: 'my-classes',
+				element: <MyClasses />,
+			},
+			{
+				path: 'manage-classes',
+				element: <ManageClasses />,
+			},
+			{
+				path: 'manage-users',
+				element: <ManageUsers />,
 			},
 		],
 	},

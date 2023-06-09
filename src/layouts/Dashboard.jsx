@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { CgLogOut } from 'react-icons/cg';
-import { FaHome, FaUserTie, FaUsers } from 'react-icons/fa';
-import { GiWallet } from 'react-icons/gi';
-import { IoMdLogIn } from 'react-icons/io';
+import { FaHome, FaUserCog, FaUserTie, FaUsers } from 'react-icons/fa';
+import { GiBookshelf, GiWallet } from 'react-icons/gi';
+import { HiUserGroup } from 'react-icons/hi';
 import { ImProfile } from 'react-icons/im';
-import { MdKeyboardBackspace } from 'react-icons/md';
+import { IoMdLogIn } from 'react-icons/io';
+import { MdAssignmentAdd, MdKeyboardBackspace } from 'react-icons/md';
 import { Link, Outlet } from 'react-router-dom';
 import Logo from '../components/Logo';
 import useTheme from '../hooks/useTheme';
@@ -22,8 +23,10 @@ const Dashboard = () => {
 	return (
 		<div className='drawer lg:drawer-open'>
 			<input id='menu' type='checkbox' className='drawer-toggle' />
-			<div className='drawer-content flex flex-col items-center justify-center'>
-				<Outlet />
+			<div className='drawer-content'>
+				<div className='container h-screen max-w-full flex items-center justify-center'>
+					<Outlet />
+				</div>
 				<label
 					htmlFor='menu'
 					className='btn btn-primary drawer-button lg:hidden absolute left-1 top-0.5'
@@ -64,12 +67,13 @@ const Dashboard = () => {
 					</Link>
 				</div>
 				<ul className='menu py-4  text-base-content mt-20 font-medium lg:text-lg'>
-					{/* Sidebar content here */}
 					<li className=' hover:text-primary'>
 						<Link to='profile'>
 							<ImProfile className='text-base' /> Profile
 						</Link>
 					</li>
+
+					{/* Student content here */}
 					<li className=' hover:text-primary'>
 						<Link to='my-selected-classes'>
 							<BiSelectMultiple className='text-base' />
@@ -88,6 +92,36 @@ const Dashboard = () => {
 							Payment History
 						</Link>
 					</li>
+
+					{/* Instructor content here */}
+					<li className=' hover:text-primary'>
+						<Link to='add-class'>
+							<MdAssignmentAdd className='text-base' />
+							Add a Class
+						</Link>
+					</li>
+					<li className=' hover:text-primary'>
+						<Link to='my-classes'>
+							<HiUserGroup className='text-base' />
+							My Classes
+						</Link>
+					</li>
+
+					{/* Admin content here */}
+					<li className=' hover:text-primary'>
+						<Link to='manage-classes'>
+							<GiBookshelf className='text-base' />
+							Manage Classes
+						</Link>
+					</li>
+					<li className=' hover:text-primary'>
+						<Link to='manage-users'>
+							<FaUserCog className='text-base' />
+							Manage Users
+						</Link>
+					</li>
+
+					{/* Home content here */}
 					<li className='border-b-2 border-primary pb-4 mb-4 bg-transparent'></li>
 					<li className=' hover:text-primary'>
 						<Link to='/'>

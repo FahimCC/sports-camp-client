@@ -56,7 +56,7 @@ const Dashboard = () => {
 					<BsMoon className='swap-off' />
 				</label>
 			</div>
-			<div className='drawer-side w-56 md:w-56 lg:w-64  h-screen bg-base-200'>
+			<div className='drawer-side w-56 lg:w-64  h-screen bg-base-200'>
 				<label htmlFor='menu' className='drawer-overlay'></label>
 				<div className='flex justify-center items-center pt-6'>
 					<label htmlFor='menu' className='ml-5 lg:hidden'>
@@ -66,10 +66,10 @@ const Dashboard = () => {
 						<Logo />
 					</Link>
 				</div>
-				<ul className='menu py-4  text-base-content mt-20 font-medium lg:text-lg'>
-					<li className=' hover:text-primary'>
-						<Link to='profile'>
-							<ImProfile className='text-base' /> Profile
+				<ul className='menu py-4 mt-20 font-medium lg:text-lg'>
+					<li className='hover:text-primary'>
+						<Link to='profile' className='hover:text-primary'>
+							<ImProfile className='text-base ' /> Profile
 						</Link>
 					</li>
 

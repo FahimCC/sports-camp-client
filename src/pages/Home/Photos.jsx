@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 
 // import required modules
-import { Autoplay, EffectCoverflow } from 'swiper';
+import { Autoplay, EffectCoverflow as EffectCoverFlow } from 'swiper';
 
 const Photos = () => {
 	return (
@@ -33,7 +33,7 @@ const Photos = () => {
 					slideShadows: true,
 				}}
 				pagination={true}
-				modules={[Autoplay, EffectCoverflow]}
+				modules={[Autoplay, EffectCoverFlow]}
 				className='mySwiper w-full py-12'
 			>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>

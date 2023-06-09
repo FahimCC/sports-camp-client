@@ -1,9 +1,16 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import registration from '../../assets/registration.svg';
 import SocialLogin from '../../components/SocialLogin';
+import useUser from '../../hooks/UseUser';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
+	useTitle('Register');
+	const { createUser, logOut, updateUserProfile } = useUser();
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
@@ -12,6 +19,31 @@ const Register = () => {
 	} = useForm();
 	const onSubmit = data => {
 		console.log(data);
+		createUser(data.email, data.password)
+			.then(result => {
+				const loggedUser = result.user;
+				console.log('register: ', loggedUser, data.name, data.photoURL);
+
+				updateUserProfile(data.name, data.photoURL)
+					.then(() => {})
+					.catch(error => console.log(error));
+
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Registration Successful.Please Login...',
+					showConfirmButton: false,
+					timer: 1500,
+				});
+
+				logOut()
+					.then(() => {})
+					.catch(error => console.log(error));
+
+				navigate('/login', { replace: true });
+				// navigate(from, { replace: true });
+			})
+			.catch(error => console.log(error));
 	};
 
 	return (

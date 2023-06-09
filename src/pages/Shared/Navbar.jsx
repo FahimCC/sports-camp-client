@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Logo from '../../components/Logo';
+import useUser from '../../hooks/UseUser';
 import useTheme from '../../hooks/useTheme';
 
 const Navbar = () => {
 	const [theme, setTheme] = useState();
+	const { user, logOut } = useUser();
 
 	const handleThemeChange = event => {
 		setTheme(event.target.checked);
 	};
 	useTheme(theme);
-
-	const user = false;
 	const navigationBar = (
 		<>
 			<li className=' hover:text-primary'>
@@ -24,9 +24,11 @@ const Navbar = () => {
 			<li className=' hover:text-primary'>
 				<Link to='/classes'>Classes</Link>
 			</li>
-			<li className=' hover:text-primary'>
-				<Link to='/dashboard/profile'>Dashboard</Link>
-			</li>
+			{user && (
+				<li className=' hover:text-primary'>
+					<Link to='/dashboard/profile'>Dashboard</Link>
+				</li>
+			)}
 		</>
 	);
 	return (
@@ -93,15 +95,15 @@ const Navbar = () => {
 										className='btn btn-ghost btn-circle avatar'
 									>
 										<div className='w-10 rounded-full'>
-											<img src='' />
+											<img src={user.photoURL} />
 										</div>
 									</label>
 									<ul
 										tabIndex={0}
-										className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
+										className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10'
 									>
 										<li>
-											<Link>Logout</Link>
+											<Link onClick={() => logOut()}>Logout</Link>
 										</li>
 									</ul>
 								</div>

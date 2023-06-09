@@ -56,13 +56,13 @@ const Dashboard = () => {
 					<BsMoon className='swap-off' />
 				</label>
 			</div>
-			<div className='drawer-side w-56 md:w-56 lg:w-64  h-screen bg-base-100'>
-				<label htmlFor='menu' className='drawer-overlay bg-base-100'></label>
+			<div className='drawer-side w-56 md:w-56 lg:w-64  h-screen bg-base-200'>
+				<label htmlFor='menu' className='drawer-overlay'></label>
 				<div className='flex justify-center items-center pt-6'>
 					<label htmlFor='menu' className='ml-5 lg:hidden'>
 						<MdKeyboardBackspace className='text-2xl' />
 					</label>
-					<Link to='/dashboard'>
+					<Link to='/dashboard/profile'>
 						<Logo />
 					</Link>
 				</div>

@@ -25,7 +25,7 @@ const Navbar = () => {
 				<Link to='/classes'>Classes</Link>
 			</li>
 			<li className=' hover:text-primary'>
-				<Link to='/dashboard'>Dashboard</Link>
+				<Link to='/dashboard/profile'>Dashboard</Link>
 			</li>
 		</>
 	);

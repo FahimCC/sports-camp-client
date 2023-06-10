@@ -1,8 +1,56 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useTitle from '../../hooks/useTitle';
 
 const ManageUsers = () => {
 	useTitle('Manage Users');
+	const [axiosSecure] = useAxiosSecure();
+	const [disable, setDisable] = useState(false);
+
+	const { data: users = [], refetch } = useQuery({
+		queryKey: ['users'],
+		queryFn: async () => {
+			const res = await axiosSecure('/users');
+			return res.data;
+		},
+	});
+
+	const handleInstructor = user => {
+		axios
+			.patch(`http://localhost:5000/users/instructor/${user._id}`)
+			.then(data => {
+				if (data.data.modifiedCount) {
+					refetch();
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: `${user.name} is an Admin Now!`,
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+			});
+	};
+
+	const handleAdmin = user => {
+		axios.patch(`http://localhost:5000/users/admin/${user._id}`).then(data => {
+			if (data.data.modifiedCount) {
+				refetch();
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: `${user.name} is an Admin Now!`,
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			}
+		});
+	};
+
 	return (
 		<div>
 			<SectionTitle title='Manage Users' />
@@ -19,30 +67,67 @@ const ManageUsers = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{/* row 1 */}
-						<tr>
-							<td>1</td>
-							<td>
-								<div className='avatar'>
-									<div className='mask mask-squircle w-12 h-12'>
-										<img
-											src='/tailwind-css-component-profile-2@56w.png'
-											alt='Avatar Tailwind CSS Component'
-										/>
+						{users.map((user, index) => (
+							<tr key={user._id}>
+								<td>{index + 1}</td>
+								<td>
+									<div className='avatar'>
+										<div className='mask mask-squircle w-12 h-12'>
+											<img
+												src={user.image}
+												alt='Avatar Tailwind CSS Component'
+											/>
+										</div>
 									</div>
-								</div>
-							</td>
-							<td>Fahim Faysal</td>
-							<td>ffnasi@gmail.com</td>
-							<td className='text-center space-y-2 '>
-								<span className='badge bg-green-400 text-black block squeeze cursor-pointer'>
-									Make Instructor
-								</span>
-								<span className='badge bg-red-400 text-black squeeze cursor-pointer'>
-									Make Admin
-								</span>
-							</td>
-						</tr>
+								</td>
+								<td>{user.name}</td>
+								<td>{user.email}</td>
+								<td className='flex flex-col gap-2 justify-center items-center h-20'>
+									{user.role === 'student' ? (
+										<>
+											<button
+												onClick={() => handleInstructor(user)}
+												className='badge bg-blue-300 text-black block '
+											>
+												Make Instructor
+											</button>
+											<button
+												onClick={() => handleAdmin(user)}
+												className='badge bg-blue-300 text-black block'
+											>
+												Make Admin
+											</button>
+										</>
+									) : user.role === 'instructor' ? (
+										<>
+											<button
+												className='btn btn-outline btn-primary btn-sm'
+												disabled
+											>
+												Instructor
+											</button>
+											<button
+												onClick={() => handleAdmin(user)}
+												className='badge bg-blue-300 text-black block'
+											>
+												Make Admin
+											</button>
+										</>
+									) : (
+										user.role === 'admin' && (
+											<>
+												<button
+													className='btn btn-outline btn-primary btn-sm'
+													disabled
+												>
+													Admin
+												</button>
+											</>
+										)
+									)}
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
@@ -51,3 +136,35 @@ const ManageUsers = () => {
 };
 
 export default ManageUsers;
+{
+	/*{user.role === 'instructor' ? (
+										<button
+											className='btn btn-outline btn-primary btn-sm'
+											disabled
+										>
+											Instructor
+										</button>
+									) : (
+										<button
+											onClick={() => handleInstructor(user)}
+											className='btn bg-blue-300 text-black block btn-sm'
+										>
+											Make Instructor
+										</button>
+									)}
+									{user.role === 'admin' ? (
+										<button
+											className='btn btn-outline btn-primary btn-sm'
+											disabled
+										>
+											Admin
+										</button>
+									) : (
+										<button
+											onClick={() => handleAdmin(user)}
+											className='btn bg-blue-300 text-black block btn-sm'
+										>
+											Make Admin
+										</button>
+									)}*/
+}

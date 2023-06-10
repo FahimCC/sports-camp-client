@@ -18,7 +18,7 @@ const SectionTitle = ({ title }) => {
 				repeatDelay: 1,
 			}}
 		>
-			<h1 className='text-2xl md:text-4xl clip font-semibold'>
+			<h1 className='text-2xl md:text-4xl clip font-semibold font-bubblegum'>
 				{title}
 			</h1>
 		</motion.div>

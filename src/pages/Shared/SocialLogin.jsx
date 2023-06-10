@@ -17,6 +17,7 @@ const SocialLogin = ({ from }) => {
 					.post('http://localhost:5000/users', {
 						name: loggedUser.displayName,
 						email: loggedUser.email,
+						image: loggedUser.photoURL,
 					})
 					.then(data => {
 						console.log('SocialLogin: ', data);
@@ -29,7 +30,7 @@ const SocialLogin = ({ from }) => {
 								timer: 1500,
 							});
 
-							console.log('sociallogin: ', from);
+							console.log('socialLogin: ', from);
 							navigate(from, { replace: true });
 						}
 					});

@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { BiRun } from 'react-icons/bi';
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const AddClass = () => {
+	useTitle('Add Class');
 	const {
 		register,
 		handleSubmit,
@@ -22,7 +24,7 @@ const AddClass = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className='p-5 md:p-10 space-y-5'
 				>
-					<div className='flex gap-10'>
+					<div className='flex gap-8'>
 						<div className='form-control w-full '>
 							<label className='label'>
 								<span className='label-text'>Class Name*</span>

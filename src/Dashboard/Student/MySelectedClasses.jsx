@@ -1,8 +1,10 @@
 import { BsTrashFill } from 'react-icons/bs';
 import { RiSecurePaymentFill } from 'react-icons/ri';
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const MySelectedClasses = () => {
+	useTitle('My Selected Classes');
 	return (
 		<div>
 			<SectionTitle title='My Selected Classes' />

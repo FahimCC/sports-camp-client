@@ -1,6 +1,8 @@
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const ManageUsers = () => {
+	useTitle('Manage Users');
 	return (
 		<div>
 			<SectionTitle title='Manage Users' />
@@ -36,7 +38,9 @@ const ManageUsers = () => {
 								<span className='badge bg-green-400 text-black block squeeze cursor-pointer'>
 									Make Instructor
 								</span>
-								<span className='badge bg-red-400 text-black squeeze cursor-pointer'>Make Admin</span>
+								<span className='badge bg-red-400 text-black squeeze cursor-pointer'>
+									Make Admin
+								</span>
 							</td>
 						</tr>
 					</tbody>

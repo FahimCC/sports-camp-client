@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -14,6 +15,7 @@ const Register = () => {
 		register,
 		handleSubmit,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm();
 	const onSubmit = data => {
@@ -24,23 +26,34 @@ const Register = () => {
 				console.log('register: ', loggedUser, data.name, data.photoURL);
 
 				updateUserProfile(data.name, data.photoURL)
-					.then(() => {})
+					.then(() => {
+						axios
+							.post('http://localhost:5000/users', {
+								name: data.name,
+								email: data.email,
+								role: 'student',
+							})
+							.then(data => {
+								if (data.insertedId) {
+									reset();
+									Swal.fire({
+										position: 'top-end',
+										icon: 'success',
+										title: 'Registration Successful.Please Login...',
+										showConfirmButton: false,
+										timer: 1500,
+									});
+
+									logOut()
+										.then(() => {})
+										.catch(error => console.log(error));
+
+									navigate('/login', { replace: true });
+									// navigate(from, { replace: true });
+								}
+							});
+					})
 					.catch(error => console.log(error));
-
-				Swal.fire({
-					position: 'top-end',
-					icon: 'success',
-					title: 'Registration Successful.Please Login...',
-					showConfirmButton: false,
-					timer: 1500,
-				});
-
-				logOut()
-					.then(() => {})
-					.catch(error => console.log(error));
-
-				navigate('/login', { replace: true });
-				// navigate(from, { replace: true });
 			})
 			.catch(error => console.log(error));
 	};

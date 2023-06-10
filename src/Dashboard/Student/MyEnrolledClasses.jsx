@@ -1,6 +1,8 @@
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const MyEnrolledClasses = () => {
+	useTitle('My Enrolled Classes')
 	return (
 		<div>
 			<SectionTitle title='My Enrolled Classes' />

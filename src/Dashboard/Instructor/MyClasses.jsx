@@ -1,7 +1,9 @@
 import { LuClipboardEdit } from 'react-icons/lu';
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const MyClasses = () => {
+	useTitle('My Classes');
 	return (
 		<div>
 			<SectionTitle title='My Classes' />

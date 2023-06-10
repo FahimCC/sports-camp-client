@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const Classes = () => {
+	useTitle('Classes');
 	return (
 		<div className='container my-14'>
 			<SectionTitle title='Classes' />

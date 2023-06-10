@@ -1,6 +1,8 @@
 import SectionTitle from '../../components/SectionTitle';
+import useTitle from '../../hooks/useTitle';
 
 const PaymentHistory = () => {
+	useTitle('Payment History');
 	return (
 		<div>
 			<SectionTitle title='Payment History' />

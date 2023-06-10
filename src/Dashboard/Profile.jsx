@@ -1,7 +1,9 @@
+import { useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useUser from '../hooks/UseUser';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
 import useTitle from '../hooks/useTitle';
-import useUser from '../hooks/UseUser';
 import './Profile.css';
 
 const Profile = () => {
@@ -9,6 +11,20 @@ const Profile = () => {
 	const { isAdmin } = useAdmin();
 	const { isInstructor } = useInstructor();
 	useTitle(user.displayName);
+	const location = useLocation();
+
+	const from = location?.state?.from?.pathname;
+	if (from) {
+		// toast.error('Unauthorized Access');
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Unauthorized Access',
+			showConfirmButton: false,
+			timer: 2000,
+		});
+	}
+
 	return (
 		<div className='w-full md:w-1/3 rounded-2xl'>
 			<div className='relative'>

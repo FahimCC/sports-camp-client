@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useState } from 'react';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
@@ -9,7 +8,6 @@ import useTitle from '../../hooks/useTitle';
 const ManageUsers = () => {
 	useTitle('Manage Users');
 	const [axiosSecure] = useAxiosSecure();
-	const [disable, setDisable] = useState(false);
 
 	const { data: users = [], refetch } = useQuery({
 		queryKey: ['users'],

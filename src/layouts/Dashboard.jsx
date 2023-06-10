@@ -10,6 +10,8 @@ import { IoMdLogIn } from 'react-icons/io';
 import { MdAssignmentAdd, MdKeyboardBackspace } from 'react-icons/md';
 import { Link, Outlet } from 'react-router-dom';
 import Logo from '../components/Logo';
+import useUser from '../hooks/UseUser';
+import useAdmin from '../hooks/useAdmin';
 import useTheme from '../hooks/useTheme';
 import './Dashboard.css';
 
@@ -19,6 +21,11 @@ const Dashboard = () => {
 		setTheme(event.target.checked);
 	};
 	useTheme(theme);
+
+	const { logOut } = useUser();
+	const { isAdmin } = useAdmin();
+	console.log(isAdmin);
+	const isInstructor = false;
 
 	return (
 		<div className='drawer lg:drawer-open'>
@@ -74,52 +81,64 @@ const Dashboard = () => {
 					</li>
 
 					{/* Student content here */}
-					<li className=' hover:text-primary'>
-						<Link to='my-selected-classes'>
-							<BiSelectMultiple className='text-base' />
-							My Selected Classes
-						</Link>
-					</li>
-					<li className=' hover:text-primary'>
-						<Link to='my-enrolled-classes'>
-							<IoMdLogIn className='text-base' />
-							My Enrolled Classes
-						</Link>
-					</li>
-					<li className=' hover:text-primary'>
-						<Link to='payment-history'>
-							<GiWallet />
-							Payment History
-						</Link>
-					</li>
+					{(isAdmin && isInstructor) || (
+						<>
+							<li className=' hover:text-primary'>
+								<Link to='my-selected-classes'>
+									<BiSelectMultiple className='text-base' />
+									My Selected Classes
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='my-enrolled-classes'>
+									<IoMdLogIn className='text-base' />
+									My Enrolled Classes
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='payment-history'>
+									<GiWallet />
+									Payment History
+								</Link>
+							</li>
+						</>
+					)}
 
 					{/* Instructor content here */}
-					<li className=' hover:text-primary'>
-						<Link to='add-class'>
-							<MdAssignmentAdd className='text-base' />
-							Add a Class
-						</Link>
-					</li>
-					<li className=' hover:text-primary'>
-						<Link to='my-classes'>
-							<HiUserGroup className='text-base' />
-							My Classes
-						</Link>
-					</li>
+					{isInstructor && (
+						<>
+							<li className=' hover:text-primary'>
+								<Link to='add-class'>
+									<MdAssignmentAdd className='text-base' />
+									Add a Class
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='my-classes'>
+									<HiUserGroup className='text-base' />
+									My Classes
+								</Link>
+							</li>
+						</>
+					)}
 
 					{/* Admin content here */}
-					<li className=' hover:text-primary'>
-						<Link to='manage-classes'>
-							<GiBookshelf className='text-base' />
-							Manage Classes
-						</Link>
-					</li>
-					<li className=' hover:text-primary'>
-						<Link to='manage-users'>
-							<FaUserCog className='text-base' />
-							Manage Users
-						</Link>
-					</li>
+					{isAdmin && (
+						<>
+							<li className=' hover:text-primary'>
+								<Link to='manage-classes'>
+									<GiBookshelf className='text-base' />
+									Manage Classes
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='manage-users'>
+									<FaUserCog className='text-base' />
+									Manage Users
+								</Link>
+							</li>
+						</>
+					)}
 
 					{/* Home content here */}
 					<li className='border-b-2 border-primary pb-4 mb-4 bg-transparent'></li>
@@ -142,7 +161,7 @@ const Dashboard = () => {
 						</Link>
 					</li>
 					<li className=' hover:text-primary'>
-						<Link>
+						<Link onClick={() => logOut()} to='/'>
 							<CgLogOut />
 							Logout
 						</Link>

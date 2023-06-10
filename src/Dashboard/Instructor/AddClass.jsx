@@ -1,19 +1,55 @@
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { BiRun } from 'react-icons/bi';
+import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useTitle from '../../hooks/useTitle';
+import useUser from '../../hooks/useUser';
 
 const AddClass = () => {
 	useTitle('Add Class');
+
+	const imageHostingURL = `https://api.imgbb.com/1/upload?key=${
+		import.meta.env.VITE_IMAGE_API
+	}`;
+
+	const { user } = useUser();
+	const [axiosSecure] = useAxiosSecure();
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm();
 
 	const onSubmit = data => {
-		console.log(data);
+		const formData = new FormData();
+		formData.append('image', data.classImage[0]);
+
+		axios.post(imageHostingURL, formData, { mode: 'no-cors' }).then(imgRes => {
+			console.log(imgRes.data);
+			if (imgRes.data.success) {
+				data.classImage = imgRes.data.data.display_url;
+				data.price = parseFloat(data.price);
+				data.availableSeat = parseInt(data.availableSeat);
+				console.log(data);
+
+				axiosSecure.post('/add-class', data).then(data => {
+					if (data.data.insertedId) {
+						reset();
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'The class has been recorded. Please wait for approval.',
+							showConfirmButton: false,
+							timer: 1500,
+						});
+					}
+				});
+			}
+		});
 	};
 	console.log(errors);
 	return (
@@ -48,7 +84,7 @@ const AddClass = () => {
 							<input
 								type='file'
 								className='file-input file-input-bordered file-input-primary w-full max-w-xs'
-								{...register('photo', { required: true })}
+								{...register('classImage', { required: true })}
 							/>
 							{errors.photo?.type === 'required' && (
 								<small className='text-red-400 mt-1 text-xs'>
@@ -64,9 +100,9 @@ const AddClass = () => {
 							</label>
 							<input
 								type='text'
-								defaultValue={'Fahim Faysal'}
+								value={user?.displayName}
 								className='input input-bordered'
-								{...register('instructorName', { required: true })}
+								{...register('instructorName', {})}
 							/>
 						</div>
 						<div className='form-control w-full '>
@@ -75,9 +111,9 @@ const AddClass = () => {
 							</label>
 							<input
 								type='email'
-								defaultValue={'ffnasi@gmail.com'}
+								value={user?.email}
 								className='input input-bordered'
-								{...register('instructorEmail', { required: true })}
+								{...register('instructorEmail', {})}
 							/>
 						</div>
 					</div>

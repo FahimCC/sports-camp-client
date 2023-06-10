@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 	const updateUserProfile = (name, photo) => {
 		return updateProfile(auth.currentUser, {
 			displayName: name,
-			photoUrl: photo,
+			photoURL: photo,
 		});
 	};
 
@@ -55,13 +55,13 @@ const AuthProvider = ({ children }) => {
 
 			if (currentUser && currentUser?.email) {
 				axios
-					.post('http://localhost:3000/jwt', { email: currentUser?.email })
+					.post('http://localhost:5000/jwt', { email: currentUser?.email })
 					.then(data => {
 						localStorage.setItem('access-token', data.data.token);
 						setLoading(false);
 					});
 			} else {
-				localStorage.remove('access-token');
+				localStorage.removeItem('access-token');
 			}
 		});
 		return () => {

@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import login from '../../assets/login.svg';
-import SocialLogin from '../../components/SocialLogin';
 import useUser from '../../hooks/UseUser';
 import useTitle from '../../hooks/useTitle';
+import SocialLogin from '../../pages/Shared/SocialLogin';
 
 const Login = () => {
 	useTitle('Login');
@@ -15,7 +15,7 @@ const Login = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const from = location?.state?.from?.pathname || '/';
+	const from = location.state?.from?.pathname || '/';
 
 	const [togglePassword, setTogglePassword] = useState(false);
 	const {
@@ -128,7 +128,7 @@ const Login = () => {
 							</button>
 						</div>
 					</form>
-					<SocialLogin />
+					<SocialLogin from={from} />
 					<p className='text-center my-4'>
 						Don't have an account?
 						<Link to='/register' className='text-primary hover:underline pl-2'>

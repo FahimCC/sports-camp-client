@@ -12,6 +12,7 @@ import { Link, Outlet } from 'react-router-dom';
 import Logo from '../components/Logo';
 import useUser from '../hooks/UseUser';
 import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 import useTheme from '../hooks/useTheme';
 import './Dashboard.css';
 
@@ -24,8 +25,8 @@ const Dashboard = () => {
 
 	const { logOut } = useUser();
 	const { isAdmin } = useAdmin();
-	console.log(isAdmin);
-	const isInstructor = false;
+	const { isInstructor } = useInstructor();
+	console.log(isInstructor);
 
 	return (
 		<div className='drawer lg:drawer-open'>
@@ -73,7 +74,7 @@ const Dashboard = () => {
 						<Logo />
 					</Link>
 				</div>
-				<ul className='menu py-4 mt-20 font-medium lg:text-lg'>
+				<ul className='menu py-4 md:px-5 mt-20 font-medium lg:text-lg'>
 					<li className='hover:text-primary'>
 						<Link to='profile' className='hover:text-primary'>
 							<ImProfile className='text-base ' /> Profile
@@ -81,7 +82,37 @@ const Dashboard = () => {
 					</li>
 
 					{/* Student content here */}
-					{(isAdmin && isInstructor) || (
+					{isAdmin ? (
+						<>
+							<li className=' hover:text-primary'>
+								<Link to='manage-classes'>
+									<GiBookshelf className='text-base' />
+									Manage Classes
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='manage-users'>
+									<FaUserCog className='text-base' />
+									Manage Users
+								</Link>
+							</li>
+						</>
+					) : isInstructor ? (
+						<>
+							<li className=' hover:text-primary'>
+								<Link to='add-class'>
+									<MdAssignmentAdd className='text-base' />
+									Add a Class
+								</Link>
+							</li>
+							<li className=' hover:text-primary'>
+								<Link to='my-classes'>
+									<HiUserGroup className='text-base' />
+									My Classes
+								</Link>
+							</li>
+						</>
+					) : (
 						<>
 							<li className=' hover:text-primary'>
 								<Link to='my-selected-classes'>
@@ -99,42 +130,6 @@ const Dashboard = () => {
 								<Link to='payment-history'>
 									<GiWallet />
 									Payment History
-								</Link>
-							</li>
-						</>
-					)}
-
-					{/* Instructor content here */}
-					{isInstructor && (
-						<>
-							<li className=' hover:text-primary'>
-								<Link to='add-class'>
-									<MdAssignmentAdd className='text-base' />
-									Add a Class
-								</Link>
-							</li>
-							<li className=' hover:text-primary'>
-								<Link to='my-classes'>
-									<HiUserGroup className='text-base' />
-									My Classes
-								</Link>
-							</li>
-						</>
-					)}
-
-					{/* Admin content here */}
-					{isAdmin && (
-						<>
-							<li className=' hover:text-primary'>
-								<Link to='manage-classes'>
-									<GiBookshelf className='text-base' />
-									Manage Classes
-								</Link>
-							</li>
-							<li className=' hover:text-primary'>
-								<Link to='manage-users'>
-									<FaUserCog className='text-base' />
-									Manage Users
 								</Link>
 							</li>
 						</>

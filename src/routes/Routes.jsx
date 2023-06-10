@@ -16,6 +16,7 @@ import Instructor from '../pages/Instructors/Instructors';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import PrivateRoute from '../routes/PrivateRoute';
+import AdminRoute from './AdminRoute';
 
 const router = createBrowserRouter([
 	{
@@ -80,11 +81,19 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'manage-classes',
-				element: <ManageClasses />,
+				element: (
+					<AdminRoute>
+						<ManageClasses />
+					</AdminRoute>
+				),
 			},
 			{
 				path: 'manage-users',
-				element: <ManageUsers />,
+				element: (
+					<AdminRoute>
+						<ManageUsers />
+					</AdminRoute>
+				),
 			},
 		],
 	},

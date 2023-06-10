@@ -85,13 +85,13 @@ const ManageUsers = () => {
 										<>
 											<button
 												onClick={() => handleInstructor(user)}
-												className='badge bg-blue-300 text-black block '
+												className='badge bg-blue-300 text-black block squeeze'
 											>
 												Make Instructor
 											</button>
 											<button
 												onClick={() => handleAdmin(user)}
-												className='badge bg-blue-300 text-black block'
+												className='badge bg-blue-300 text-black block squeeze'
 											>
 												Make Admin
 											</button>
@@ -106,7 +106,7 @@ const ManageUsers = () => {
 											</button>
 											<button
 												onClick={() => handleAdmin(user)}
-												className='badge bg-blue-300 text-black block'
+												className='badge bg-blue-300 text-black block squeeze'
 											>
 												Make Admin
 											</button>

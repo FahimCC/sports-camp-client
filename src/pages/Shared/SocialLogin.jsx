@@ -20,7 +20,7 @@ const SocialLogin = ({ from }) => {
 						image: loggedUser.photoURL,
 					})
 					.then(data => {
-						console.log('SocialLogin: ', data);
+						// console.log('SocialLogin: ', data);
 						if (data.data.insertedId) {
 							Swal.fire({
 								position: 'top-end',
@@ -30,7 +30,19 @@ const SocialLogin = ({ from }) => {
 								timer: 1500,
 							});
 
-							console.log('socialLogin: ', from);
+							// console.log('socialLogin: ', from);
+							navigate(from, { replace: true });
+						}
+						if (data.statusText === 'OK') {
+							Swal.fire({
+								position: 'top-end',
+								icon: 'success',
+								title: 'User Login Successful.',
+								showConfirmButton: false,
+								timer: 1500,
+							});
+
+							// console.log('socialLogin: ', from);
 							navigate(from, { replace: true });
 						}
 					});

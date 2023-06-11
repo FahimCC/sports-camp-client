@@ -3,6 +3,7 @@ import ManageClasses from '../Dashboard/Admin/ManageClasses';
 import ManageUsers from '../Dashboard/Admin/ManageUsers';
 import AddClass from '../Dashboard/Instructor/AddClass';
 import MyClasses from '../Dashboard/Instructor/MyClasses';
+import UpdateClass from '../Dashboard/Instructor/UpdateClass';
 import Profile from '../Dashboard/Profile';
 import MyEnrolledClasses from '../Dashboard/Student/MyEnrolledClasses';
 import MySelectedClasses from '../Dashboard/Student/MySelectedClasses';
@@ -77,6 +78,14 @@ const router = createBrowserRouter([
 				element: (
 					<InstructorRoute>
 						<AddClass />
+					</InstructorRoute>
+				),
+			},
+			{
+				path: 'update-class/:id',
+				element: (
+					<InstructorRoute>
+						<UpdateClass />
 					</InstructorRoute>
 				),
 			},

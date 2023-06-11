@@ -18,6 +18,7 @@ const Login = () => {
 	const from = location?.state?.from?.pathname || '/';
 
 	const [togglePassword, setTogglePassword] = useState(false);
+	const [err, setErr] = useState('');
 	const {
 		register,
 		handleSubmit,
@@ -36,9 +37,13 @@ const Login = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
+				setErr('');
 				navigate(from, { replace: true });
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				setErr(error?.message);
+				console.log(error);
+			});
 	};
 
 	return (
@@ -121,6 +126,9 @@ const Login = () => {
 									Password is required
 								</small>
 							)}
+							<label className='label'>
+								<p className='label-text-alt text-error'>{err}</p>
+							</label>
 						</div>
 						<div className='form-control mt-6'>
 							<button type='submit' className='btn bg-first hover:bg-second'>

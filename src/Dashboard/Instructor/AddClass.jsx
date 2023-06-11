@@ -2,6 +2,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { BiRun } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
@@ -10,6 +11,8 @@ import useUser from '../../hooks/useUser';
 
 const AddClass = () => {
 	useTitle('Add Class');
+
+	const navigate = useNavigate();
 
 	const imageHostingURL = `https://api.imgbb.com/1/upload?key=${
 		import.meta.env.VITE_IMAGE_API
@@ -44,8 +47,9 @@ const AddClass = () => {
 							icon: 'info',
 							title: 'The class has been recorded. Please wait for approval.',
 							showConfirmButton: false,
-							timer: 1500,
+							timer: 3000,
 						});
+						navigate('my-classes');
 					}
 				});
 			}

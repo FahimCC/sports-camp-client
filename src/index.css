@@ -10,3 +10,6 @@
 .clip {
 	@apply bg-clip-text text-transparent bg-gradient-to-r from-first via-[#1db9ac] to-second;
 }
+.btn-custom {
+	@apply px-2 py-1 rounded-lg border-2;
+}

@@ -26,7 +26,7 @@ const Dashboard = () => {
 	const { logOut } = useUser();
 	const { isAdmin } = useAdmin();
 	const { isInstructor } = useInstructor();
-	console.log(isInstructor);
+	// console.log(isInstructor);
 
 	return (
 		<div className='drawer lg:drawer-open'>

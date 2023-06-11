@@ -85,28 +85,25 @@ const ManageUsers = () => {
 										<>
 											<button
 												onClick={() => handleInstructor(user)}
-												className='badge bg-blue-300 text-black block squeeze'
+												className='btn btn-xs bg-blue-300 text-black block squeeze'
 											>
 												Make Instructor
 											</button>
 											<button
 												onClick={() => handleAdmin(user)}
-												className='badge bg-blue-300 text-black block squeeze'
+												className='btn btn-xs bg-blue-400 text-black block squeeze'
 											>
 												Make Admin
 											</button>
 										</>
 									) : user.role === 'instructor' ? (
 										<>
-											<button
-												className='btn btn-outline btn-primary btn-sm'
-												disabled
-											>
+											<button className='btn-custom border-green-300 text-green-300' disabled>
 												Instructor
 											</button>
 											<button
 												onClick={() => handleAdmin(user)}
-												className='badge bg-blue-300 text-black block squeeze'
+												className='btn btn-xs bg-blue-400 text-black block squeeze'
 											>
 												Make Admin
 											</button>
@@ -115,7 +112,7 @@ const ManageUsers = () => {
 										user.role === 'admin' && (
 											<>
 												<button
-													className='btn btn-outline btn-primary btn-sm'
+													className='btn-custom border-green-400 text-green-400'
 													disabled
 												>
 													Admin

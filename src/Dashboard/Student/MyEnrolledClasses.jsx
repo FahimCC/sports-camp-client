@@ -1,8 +1,26 @@
+import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../components/SectionTitle';
+import useUser from '../../hooks/UseUser';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useTitle from '../../hooks/useTitle';
 
 const MyEnrolledClasses = () => {
 	useTitle('My Enrolled Classes');
+
+	const [axiosSecure] = useAxiosSecure();
+	const { user } = useUser();
+
+	const { data: classes = [] } = useQuery({
+		queryKey: ['classes', user?.email],
+		queryFn: async () => {
+			const res = await axiosSecure.get(
+				`/select-class?email=${user?.email}&paymentStatus=paid`
+			);
+			// console.log(user?.email, res.data);
+			return res.data;
+		},
+	});
+
 	return (
 		<div>
 			<SectionTitle title='My Enrolled Classes' />
@@ -19,20 +37,24 @@ const MyEnrolledClasses = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{/* row 1 */}
-						<tr>
-							<td>1</td>
-							<td>
-								<div className='avatar'>
-									<div className='mask mask-squircle w-12 h-12'>
-										<img src='' alt='Avatar Tailwind CSS Component' />
+						{classes?.map((clas, index) => (
+							<tr key={clas._id}>
+								<td>{index + 1}</td>
+								<td>
+									<div className='avatar'>
+										<div className='mask mask-squircle w-12 h-12'>
+											<img
+												src={clas.classImage}
+												alt='Avatar Tailwind CSS Component'
+											/>
+										</div>
 									</div>
-								</div>
-							</td>
-							<td>Cricket</td>
-							<td>David Whatmore</td>
-							<td>$200</td>
-						</tr>
+								</td>
+								<td>{clas.className}</td>
+								<td>{clas.instructorName}</td>
+								<td>${clas.price}</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>

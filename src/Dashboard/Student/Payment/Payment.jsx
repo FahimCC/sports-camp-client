@@ -10,18 +10,16 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
 	const { id } = useParams();
-	console.log('payment: ', id);
 	const [axiosSecure] = useAxiosSecure();
 
 	const { data: clas = [] } = useQuery({
 		queryKey: ['clas', id],
 		queryFn: async () => {
 			const res = await axiosSecure.get(`/remove-select-class/${id}`);
-			console.log(res.data);
+			// console.log(res.data);
 			return res.data;
 		},
 	});
-	console.log(clas);
 
 	return (
 		<div>

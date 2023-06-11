@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
@@ -18,7 +17,7 @@ const Classes = () => {
 	const { isAdmin } = useAdmin();
 	const { isInstructor } = useInstructor();
 
-	const [disable, setDisable] = useState({ isAdmin } || { isInstructor });
+	// const [disable, setDisable] = useState({ isAdmin } || { isInstructor });
 
 	const { data: classes = [] } = useQuery({
 		queryKey: ['classes'],
@@ -46,10 +45,8 @@ const Classes = () => {
 				instructorName,
 				availableSeat,
 				price,
+				paymentStatus: 'pending',
 			};
-			clas.studentEmail = user?.email;
-			clas.classId = clas._id;
-			delete clas._id;
 			axiosSecure.post('/select-class', selectedClas).then(res => {
 				if (res.data.insertedId) {
 					Swal.fire({
@@ -111,7 +108,7 @@ const Classes = () => {
 								<button
 									onClick={() => handleSelect(clas)}
 									className='btn btn-primary mt-4'
-									disabled={disable}
+									disabled={false}
 								>
 									Select
 								</button>

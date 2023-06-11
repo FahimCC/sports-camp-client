@@ -15,8 +15,10 @@ const MySelectedClasses = () => {
 	const { data: classes = [] } = useQuery({
 		queryKey: ['classes', user?.email],
 		queryFn: async () => {
-			const res = await axiosSecure.get(`/select-class/${user?.email}`);
-			console.log(user?.email, res.data);
+			const res = await axiosSecure.get(
+				`/select-class?email=${user?.email}&paymentStatus=pending`
+			);
+			// console.log(user?.email, res.data);
 			return res.data;
 		},
 	});

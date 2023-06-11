@@ -81,6 +81,11 @@ const CheckoutForm = ({ clas }) => {
 				date: new Date(),
 				selectedClassId: _id,
 			};
+			axiosSecure.patch(`/select-class/${_id}`).then(res => {
+				if (res.data.modifiedCount > 0) {
+					console.log(res.data.modifiedCount);
+				}
+			});
 			axiosSecure.post('/payment', paymentDetails).then(res => {
 				if (res.data.insertedId) {
 					Swal.fire({
@@ -89,11 +94,6 @@ const CheckoutForm = ({ clas }) => {
 						title: 'Payment Successful',
 						showConfirmButton: false,
 						timer: 2000,
-					});
-					axiosSecure.delete(`/remove-select-class/${_id}`).then(res => {
-						if (res.data.deletedCount > 0) {
-							console.log(res.data.deletedCount);
-						}
 					});
 					navigation('/dashboard/my-selected-classes');
 				}

@@ -52,7 +52,7 @@ const ManageUsers = () => {
 	return (
 		<div>
 			<SectionTitle title='Manage Users' />
-			<div className='overflow-x-auto rounded-lg'>
+			<div className='min-h-fit  h-[500px] overflow-x-auto overflow-y-auto rounded-lg'>
 				<table className='table '>
 					{/* head */}
 					<thead>
@@ -98,7 +98,10 @@ const ManageUsers = () => {
 										</>
 									) : user.role === 'instructor' ? (
 										<>
-											<button className='btn-custom border-green-300 text-green-300' disabled>
+											<button
+												className='btn-custom border-green-300 text-green-300'
+												disabled
+											>
 												Instructor
 											</button>
 											<button

@@ -17,14 +17,14 @@ const MyClasses = () => {
 		queryFn: async () => {
 			const res = await axiosSecure.get(`/my-classes/${user?.email}`);
 			// console.log('my-classes: ', res.data);
-			return res.data;
+			return (await res).data;
 		},
 	});
 
 	return (
 		<div>
 			<SectionTitle title='My Classes' />
-			<div className='overflow-x-auto rounded-lg'>
+			<div className='min-h-fit  h-[500px] overflow-x-auto overflow-y-auto rounded-lg'>
 				<table className='table '>
 					{/* head */}
 					<thead>

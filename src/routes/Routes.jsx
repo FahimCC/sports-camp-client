@@ -7,6 +7,7 @@ import UpdateClass from '../Dashboard/Instructor/UpdateClass';
 import Profile from '../Dashboard/Profile';
 import MyEnrolledClasses from '../Dashboard/Student/MyEnrolledClasses';
 import MySelectedClasses from '../Dashboard/Student/MySelectedClasses';
+import Payment from '../Dashboard/Student/Payment/Payment';
 import PaymentHistory from '../Dashboard/Student/PaymentHistory';
 import ErrorPage from '../components/ErrorPage';
 import Dashboard from '../layouts/Dashboard';
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
 			{
 				path: 'my-enrolled-classes',
 				element: <MyEnrolledClasses />,
+			},
+			{
+				path: 'payment/:id',
+				element: <Payment />,
 			},
 			{
 				path: 'payment-history',

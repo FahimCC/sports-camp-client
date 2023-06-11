@@ -5,9 +5,9 @@ import { BiRun } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
+import useUser from '../../hooks/UseUser';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useTitle from '../../hooks/useTitle';
-import useUser from '../../hooks/useUser';
 
 const AddClass = () => {
 	useTitle('Add Class');
@@ -49,7 +49,7 @@ const AddClass = () => {
 							showConfirmButton: false,
 							timer: 3000,
 						});
-						navigate('my-classes');
+						navigate('/dashboard/my-classes');
 					}
 				});
 			}

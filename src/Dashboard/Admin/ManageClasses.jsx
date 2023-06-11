@@ -53,7 +53,7 @@ const ManageClasses = () => {
 						Swal.fire({
 							position: 'top-end',
 							icon: 'success',
-							title: `Feedback class has been send to the Instructor`,
+							title: `Feedback has been send to the Instructor`,
 							showConfirmButton: false,
 							timer: 2000,
 						});
@@ -65,7 +65,7 @@ const ManageClasses = () => {
 	return (
 		<div>
 			<SectionTitle title='Manage Classes' />
-			<div className='overflow-x-auto rounded-lg'>
+			<div className='min-h-fit  h-[500px] overflow-y-auto overflow-x-auto rounded-lg'>
 				<table className='table '>
 					{/* head */}
 					<thead>
@@ -80,7 +80,7 @@ const ManageClasses = () => {
 							<th className='text-center'>Action</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className=''>
 						{classes?.map((clas, index) => (
 							<tr key={clas._id}>
 								<td>{index + 1}</td>

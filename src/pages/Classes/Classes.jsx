@@ -72,7 +72,7 @@ const Classes = () => {
 			});
 		} else {
 			Swal.fire({
-				title: 'Please Login before selecting he course',
+				title: 'Please Login before selecting the course',
 				icon: 'info',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',

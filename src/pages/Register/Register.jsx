@@ -76,6 +76,16 @@ const Register = () => {
 		});
 	};
 
+	const handleRegister = () => {
+		Swal.fire({
+			position: 'center',
+			icon: 'info',
+			title: 'Please Wait...',
+			showConfirmButton: false,
+			timer: 3000,
+		});
+	};
+
 	return (
 		<div className='hero my-2'>
 			<div className='hero-content flex-col lg:flex-row-reverse gap-20'>
@@ -189,6 +199,7 @@ const Register = () => {
 						</div>
 						<div className='form-control mt-6'>
 							<button
+								onClick={handleRegister}
 								type='submit'
 								className='btn bg-first hover:bg-second text-black'
 							>

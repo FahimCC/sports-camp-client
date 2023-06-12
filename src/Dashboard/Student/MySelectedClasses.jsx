@@ -48,7 +48,7 @@ const MySelectedClasses = () => {
 						No class was selected. Please select first...
 					</p>
 				) : (
-					<table className='table md:text-lg'>
+					<table className='table text-xs  md:text-lg'>
 						{/* head */}
 						<thead>
 							<tr className='bg-base-200 text-base'>
@@ -63,41 +63,55 @@ const MySelectedClasses = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{refetch() &&
-								classes?.map((clas, index) => (
-									<tr key={clas._id}>
-										<td>{index + 1}</td>
-										<td>
-											<div className='avatar'>
-												<div className='mask mask-squircle w-12 h-12'>
-													<img
-														src={clas.classImage}
-														alt='Avatar Tailwind CSS Component'
-													/>
-												</div>
+							{classes?.map((clas, index) => (
+								<tr key={clas._id}>
+									<td>{index + 1}</td>
+									<td>
+										<div className='avatar'>
+											<div className='mask mask-squircle w-12 h-12'>
+												<img
+													src={clas.classImage}
+													alt='Avatar Tailwind CSS Component'
+												/>
 											</div>
-										</td>
-										<td>{clas.className}</td>
-										<td>{clas.instructorName}</td>
-										<td>{clas.availableSeat}</td>
-										<td>${clas.price}</td>
-										<td>
-											<Link to={`/dashboard/payment/${clas._id}`}>
-												<button className='btn btn-xs bg-sky-400 text-black squeeze'>
-													Payment
-												</button>
-											</Link>
-										</td>
-										<td>
+										</div>
+									</td>
+									<td>{clas.className}</td>
+									<td>{clas.instructorName}</td>
+									<td
+										className={`text-center ${
+											clas.availableSeat === 0 && 'text-red-500'
+										}`}
+									>
+										{clas.availableSeat}
+									</td>
+									<td>${clas.price}</td>
+									<td>
+										<Link
+											to={`${
+												clas.availableSeat === 0
+													? ''
+													: `/dashboard/payment/${clas._id}`
+											}`}
+										>
 											<button
-												onClick={() => handleDelete(clas._id)}
-												className='p-2 rounded-lg bg-red-400 text-black squeeze'
+												className='btn btn-xs bg-sky-400 text-black squeeze'
+												disabled={clas.availableSeat === 0}
 											>
-												<BsTrashFill className='text-lg' />
+												Payment
 											</button>
-										</td>
-									</tr>
-								))}
+										</Link>
+									</td>
+									<td>
+										<button
+											onClick={() => handleDelete(clas._id)}
+											className='p-2 rounded-lg bg-red-400 text-black squeeze'
+										>
+											<BsTrashFill className='text-lg' />
+										</button>
+									</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				)}

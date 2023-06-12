@@ -23,8 +23,8 @@ const Classes = () => {
 	const { data: classes = [] } = useQuery({
 		queryKey: ['classes'],
 		queryFn: async () => {
-			const res = axiosSecure.get('/classes/approved');
-			return (await res).data;
+			const res = await axiosSecure.get('/classes/approved');
+			return await res.data;
 		},
 	});
 
@@ -48,7 +48,7 @@ const Classes = () => {
 				price,
 				paymentStatus: 'pending',
 			};
-			axiosSecure.post('/select-class', selectedClas).then(res => {
+			axiosSecure.post(`/select-class`, selectedClas).then(res => {
 				if (res.data.insertedId) {
 					Swal.fire({
 						position: 'top-end',
@@ -90,7 +90,9 @@ const Classes = () => {
 				{classes?.map(clas => (
 					<Link
 						key={clas._id}
-						className='rounded-lg relative shadow-2xl shadow-primary'
+						className={`rounded-lg relative shadow-xl ${
+							clas.availableSeat === 0 ? 'shadow-red-500' : 'shadow-primary'
+						}`}
 					>
 						<img
 							src={clas.classImage}
@@ -117,7 +119,7 @@ const Classes = () => {
 								<button
 									onClick={() => handleSelect(clas)}
 									className='btn btn-primary mt-4'
-									disabled={disable}
+									disabled={isAdmin || isInstructor || clas.availableSeat === 0}
 								>
 									Select
 								</button>

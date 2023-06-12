@@ -6,7 +6,7 @@ import useUser from '../../../hooks/UseUser';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const CheckoutForm = ({ clas }) => {
-	const { _id, classImage, className, price } = clas;
+	const { _id, classImage, className, price, availableSeat, classId } = clas;
 	const [cardError, setCardError] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
 	const stripe = useStripe();
@@ -89,11 +89,25 @@ const CheckoutForm = ({ clas }) => {
 				date: new Date(),
 				selectedClassId: _id,
 			};
-			axiosSecure.patch(`/select-class/${_id}`).then(res => {
+			axiosSecure
+				.patch(`/select-class/${classId}`, { availableSeat })
+				.then(res => {
+					if (res.data.modifiedCount > 0) {
+						console.log(res.data.modifiedCount);
+					}
+				});
+			axiosSecure.patch(`/paid-select-class/${_id}`).then(res => {
 				if (res.data.modifiedCount > 0) {
 					console.log(res.data.modifiedCount);
 				}
 			});
+			axiosSecure
+				.patch(`/classes/approved/${classId}`, { availableSeat })
+				.then(res => {
+					if (res.data.modifiedCount > 0) {
+						console.log(res.data.modifiedCount);
+					}
+				});
 			axiosSecure.post('/payment', paymentDetails).then(res => {
 				if (res.data.insertedId) {
 					Swal.fire({
@@ -110,7 +124,7 @@ const CheckoutForm = ({ clas }) => {
 	};
 
 	return (
-		<div className='w-full md:w-[450px] lg:w-[600px] border-4 border-primary p-10 rounded-lg hover:border-double'>
+		<div className='w-[280px] md:w-[450px] lg:w-[600px] border-4 border-primary p-5 md:p-10 rounded-lg hover:border-double'>
 			<form className='max-w-full' onSubmit={handleSubmit}>
 				<div className='border-2 p-2 rounded-lg hover:border-dashed'>
 					<CardElement

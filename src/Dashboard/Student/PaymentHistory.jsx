@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment/moment';
 import SectionTitle from '../../components/SectionTitle';
+import useUser from '../../hooks/UseUser';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useTitle from '../../hooks/useTitle';
 
@@ -8,11 +9,12 @@ const PaymentHistory = () => {
 	useTitle('Payment History');
 
 	const [axiosSecure] = useAxiosSecure();
+	const { user } = useUser();
 
 	const { data: payments = [] } = useQuery({
-		queryKey: ['clas'],
+		queryKey: ['clas', user?.email],
 		queryFn: async () => {
-			const res = await axiosSecure.get(`/payment`);
+			const res = await axiosSecure.get(`/payment/${user?.email}`);
 			// console.log(res.data);
 			return res.data;
 		},
@@ -27,7 +29,7 @@ const PaymentHistory = () => {
 						No payment was done. Please pay first...
 					</p>
 				) : (
-					<table className='table md:text-lg'>
+					<table className='table text-xs md:text-lg'>
 						{/* head */}
 						<thead>
 							<tr className='bg-base-200 text-base'>

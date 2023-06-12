@@ -17,7 +17,7 @@ const Slider = () => {
 			>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/9393464/pexels-photo-9393464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -36,7 +36,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/15874976/pexels-photo-15874976/free-photo-of-boys-posing-with-football-balls.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -55,7 +55,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/8457973/pexels-photo-8457973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -75,7 +75,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/6504851/pexels-photo-6504851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -95,7 +95,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/5815672/pexels-photo-5815672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -115,7 +115,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/1234953/pexels-photo-1234953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -134,7 +134,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/13894134/pexels-photo-13894134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -154,7 +154,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-center bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-center bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/8224422/pexels-photo-8224422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -174,7 +174,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-top bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-top bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://images.pexels.com/photos/14605729/pexels-photo-14605729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
 						}}
@@ -194,7 +194,7 @@ const Slider = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<div
-						className='max-w-full h-[630px] bg-top bg-cover aspect-auto '
+						className='max-w-full h-[400px] lg:h-[630px] bg-top bg-cover aspect-auto '
 						style={{
 							backgroundImage: `url('https://pbs.twimg.com/media/DJcXgU2XoAAL47u.jpg')`,
 						}}

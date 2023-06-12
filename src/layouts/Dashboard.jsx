@@ -32,9 +32,12 @@ const Dashboard = () => {
 		<div className='drawer lg:drawer-open'>
 			<input id='menu' type='checkbox' className='drawer-toggle' />
 			<div className='drawer-content'>
-				<div className='container h-screen max-w-full flex items-center justify-center'>
-					<Outlet />
+				<div className='container '>
+					<div className='h-screen w-full flex items-center justify-center'>
+						<Outlet />
+					</div>
 				</div>
+
 				<label
 					htmlFor='menu'
 					className='btn btn-primary drawer-button lg:hidden absolute left-1 top-0.5'

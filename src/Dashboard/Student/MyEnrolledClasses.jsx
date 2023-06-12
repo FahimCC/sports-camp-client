@@ -30,7 +30,7 @@ const MyEnrolledClasses = () => {
 						No payment was done. Please pay first...
 					</p>
 				) : (
-					<table className='table md:text-lg'>
+					<table className='table text-xs  md:text-lg'>
 						{/* head */}
 						<thead>
 							<tr className='bg-base-200 text-base'>

@@ -6,7 +6,15 @@ import useUser from '../../../hooks/UseUser';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const CheckoutForm = ({ clas }) => {
-	const { _id, classImage, className, price, availableSeat, classId } = clas;
+	const {
+		_id,
+		classImage,
+		className,
+		price,
+		availableSeat,
+		enrollCount,
+		classId,
+	} = clas;
 	const [cardError, setCardError] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
 	const stripe = useStripe();
@@ -90,7 +98,7 @@ const CheckoutForm = ({ clas }) => {
 				selectedClassId: _id,
 			};
 			axiosSecure
-				.patch(`/select-class/${classId}`, { availableSeat })
+				.patch(`/select-class/${classId}`, { availableSeat, enrollCount })
 				.then(res => {
 					if (res.data.modifiedCount > 0) {
 						console.log(res.data.modifiedCount);
@@ -102,7 +110,7 @@ const CheckoutForm = ({ clas }) => {
 				}
 			});
 			axiosSecure
-				.patch(`/classes/approved/${classId}`, { availableSeat })
+				.patch(`/classes/approved/${classId}`, { availableSeat, enrollCount })
 				.then(res => {
 					if (res.data.modifiedCount > 0) {
 						console.log(res.data.modifiedCount);

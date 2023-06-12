@@ -16,7 +16,7 @@ const Payment = () => {
 		queryKey: ['clas', id],
 		queryFn: async () => {
 			const res = await axiosSecure.get(`/remove-select-class/${id}`);
-			// console.log(res.data);
+			// console.log('payment:', res.data);
 			return res.data;
 		},
 	});

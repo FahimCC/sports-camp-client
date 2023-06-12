@@ -37,6 +37,7 @@ const Classes = () => {
 				instructorName,
 				price,
 				availableSeat,
+				enrollCount,
 			} = clas;
 			const selectedClas = {
 				classId: _id,
@@ -46,8 +47,10 @@ const Classes = () => {
 				instructorName,
 				availableSeat,
 				price,
+				enrollCount,
 				paymentStatus: 'pending',
 			};
+			// console.log('classes: ', selectedClas);
 			axiosSecure.post(`/select-class`, selectedClas).then(res => {
 				if (res.data.insertedId) {
 					Swal.fire({

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Autoplay } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';

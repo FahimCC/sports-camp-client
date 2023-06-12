@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle';
@@ -17,7 +18,7 @@ const Classes = () => {
 	const { isAdmin } = useAdmin();
 	const { isInstructor } = useInstructor();
 
-	// const [disable, setDisable] = useState({ isAdmin } || { isInstructor });
+	const [disable, setDisable] = useState(isAdmin || isInstructor);
 
 	const { data: classes = [] } = useQuery({
 		queryKey: ['classes'],
@@ -54,7 +55,15 @@ const Classes = () => {
 						icon: 'success',
 						title: 'Class has been selected',
 						showConfirmButton: false,
-						timer: 2000,
+						timer: 1000,
+					});
+				} else if (res.data.message === 'Class already added') {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'warning',
+						title: 'This Class already selected',
+						showConfirmButton: false,
+						timer: 1000,
 					});
 				}
 			});
@@ -108,7 +117,7 @@ const Classes = () => {
 								<button
 									onClick={() => handleSelect(clas)}
 									className='btn btn-primary mt-4'
-									disabled={false}
+									disabled={disable}
 								>
 									Select
 								</button>

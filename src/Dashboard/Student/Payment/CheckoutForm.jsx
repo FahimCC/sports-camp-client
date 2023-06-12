@@ -18,11 +18,13 @@ const CheckoutForm = ({ clas }) => {
 	const navigation = useNavigate();
 
 	useEffect(() => {
-		axiosSecure.post('/create-payment-intent', { price }).then(res => {
-			// console.log(res.data.clientSecret);
-			setClientSecret(res.data.clientSecret);
-		});
-	}, []);
+		if (price > 0) {
+			axiosSecure.post('/create-payment-intent', { price }).then(res => {
+				// console.log(res.data.clientSecret);
+				setClientSecret(res.data.clientSecret);
+			});
+		}
+	}, [axiosSecure, price]);
 
 	const handleSubmit = async event => {
 		event.preventDefault();
@@ -65,6 +67,12 @@ const CheckoutForm = ({ clas }) => {
 		if (confirmError) {
 			setCardError(confirmError);
 			console.log(confirmError);
+			Swal.fire({
+				icon: 'error',
+				title: 'Payment Error',
+				text: 'An error occurred while processing your payment. Please try again.',
+			});
+			navigation('/dashboard/my-selected-classes');
 		}
 
 		setProcessing(false);
@@ -76,7 +84,7 @@ const CheckoutForm = ({ clas }) => {
 				className,
 				name: user?.displayName,
 				email: user?.email,
-				transactionId,
+				transactionId: paymentIntent.id,
 				price,
 				date: new Date(),
 				selectedClassId: _id,

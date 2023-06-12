@@ -44,7 +44,7 @@ const Register = () => {
 						updateUserProfile(data.name, data.image)
 							.then(() => {
 								axios
-									.post('http://localhost:5000/users', {
+									.post('https://sports-camp-server-zeta.vercel.app/users', {
 										name: data.name,
 										email: data.email,
 										image: data.image,

@@ -55,7 +55,9 @@ const AuthProvider = ({ children }) => {
 
 			if (currentUser && currentUser?.email) {
 				axios
-					.post('http://localhost:5000/jwt', { email: currentUser?.email })
+					.post('https://sports-camp-server-zeta.vercel.app/jwt', {
+						email: currentUser?.email,
+					})
 					.then(data => {
 						localStorage.setItem('access-token', data.data.token);
 						setLoading(false);

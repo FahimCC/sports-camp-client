@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useUser from '../hooks/UseUser';
 
 const axiosSecure = axios.create({
-	baseURL: 'http://localhost:5000',
+	baseURL: 'https://sports-camp-server-zeta.vercel.app',
 });
 
 const useAxiosSecure = () => {

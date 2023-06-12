@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const PopularClasses = () => {
@@ -15,7 +16,7 @@ const PopularClasses = () => {
 	return (
 		<div className='container my-36'>
 			<div className='w-fit mx-auto'>
-				<h1 className='text-2xl md:text-4xl border-0 border-b-8 border-primary border-double clip font-semibold'>
+				<h1 className='text-2xl md:text-4xl clip font-semibold'>
 					Popular Classes
 				</h1>
 			</div>
@@ -28,9 +29,19 @@ const PopularClasses = () => {
 							alt=''
 						/>
 						<div className='rounded-lg absolute top-0 left-0 right-0 bg-black bg-opacity-40 w-full h-72 flex items-center justify-center'>
-							<h1 className='rounded-lg text-secondary text-2xl md:text-4xl font-bold'>
-								{clas.className}
-							</h1>
+							<h3 className='rounded-lg text-third text-2xl md:text-4xl font-bold'>
+								<Typewriter
+									delaySpeed={1500}
+									deleteSpeed={25}
+									loop={0}
+									typeSpeed={75}
+									words={[
+										`${clas.className}`,
+										`${clas.className}`,
+										`${clas.className}`,
+									]}
+								/>
+							</h3>
 						</div>
 					</Link>
 				))}

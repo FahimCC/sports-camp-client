@@ -11,7 +11,7 @@ const Photos = () => {
 	return (
 		<div className='my-36'>
 			<div className='w-fit mx-auto mb-10'>
-				<h1 className='text-2xl md:text-4xl border-0 border-b-8 border-primary border-double clip font-semibold'>
+				<h1 className='text-2xl md:text-4xl clip font-semibold'>
 					Summer Camp Photos
 				</h1>
 			</div>
@@ -38,104 +38,56 @@ const Photos = () => {
 			>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px] '
+						src='https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/04/04/Photos/cricket-knxG--621x414@LiveMint.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://sambasoccerschools.com/wp-content/uploads/2020/11/follow-instructions-in-football-camp.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://media.chatterblock.com/files/location_images/prairie-badminton-None-d7ed47.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://mvztennis.com/wp-content/uploads/2017/09/kids-private-tennis-lesson-tennis-academy.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://www.bendparksandrec.org/wp-content/uploads/2015/05/Shevlin-Park-and-Trail-Bike-Ride-e1525293222211.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://i0.wp.com/blog.scoutingmagazine.org/wp-content/uploads/sites/2/2022/05/16652_CCRaymond0256-scaled.jpg?fit=2560%2C1707&ssl=1'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://archive.deltacollege.edu/dept/publicinfo/prel/2014/images/DSC_0650_600.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://www.jurasports.com/wp-content/uploads/2019/09/Day-1-Long-Jump.jpg'
 					/>
 				</SwiperSlide>
 				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
 					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
-					/>
-				</SwiperSlide>
-				<SwiperSlide className='bg-center bg-cover max-w-lg aspect-auto'>
-					<img
-						className='block w-full'
-						src='https://swiperjs.com/demos/images/nature-1.jpg'
+						className='block w-full h-[400px]'
+						src='https://img.kyodonews.net/english/public/images/posts/17123c28138571f374268e65a3588ef7/photo_l.jpg'
 					/>
 				</SwiperSlide>
 			</Swiper>

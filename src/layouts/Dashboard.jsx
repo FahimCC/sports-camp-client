@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { CgLogOut } from 'react-icons/cg';
@@ -13,15 +13,29 @@ import Logo from '../components/Logo';
 import useUser from '../hooks/UseUser';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
-import useTheme from '../hooks/useTheme';
 import './Dashboard.css';
 
 const Dashboard = () => {
-	const [theme, setTheme] = useState();
-	const handleThemeChange = event => {
-		setTheme(event.target.checked);
+	const [theme, setTheme] = useState(
+		localStorage.getItem('theme') ? localStorage.getItem('theme') : 'lemonade'
+	);
+
+	// update state on toggle
+	const handleToggle = e => {
+		if (e.target.checked) {
+			setTheme('forest');
+		} else {
+			setTheme('lemonade');
+		}
 	};
-	useTheme(theme);
+
+	// set theme state in localstorage on mount & also update localstorage on state change
+	useEffect(() => {
+		localStorage.setItem('theme', theme);
+		const localTheme = localStorage.getItem('theme');
+		// add custom data-theme attribute to html tag required to update theme using DaisyUI
+		document.querySelector('html').setAttribute('data-theme', localTheme);
+	}, [theme]);
 
 	const { logOut } = useUser();
 	const { isAdmin } = useAdmin();
@@ -61,7 +75,12 @@ const Dashboard = () => {
 			<div className='absolute top-2 right-2 border-4 border-dotted border-primary rounded-full'>
 				<label className='swap swap-rotate p-2 text-lg md:text-2xl '>
 					{/* this hidden checkbox controls the state */}
-					<input onChange={handleThemeChange} type='checkbox' />
+					<input
+						type='checkbox'
+						onChange={handleToggle}
+						// show toggle image based on local storage theme
+						checked={theme === 'lemonade' ? false : true}
+					/>
 
 					<BsSun className='swap-on' />
 					<BsMoon className='swap-off' />

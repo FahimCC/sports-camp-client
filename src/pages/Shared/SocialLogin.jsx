@@ -14,7 +14,7 @@ const SocialLogin = ({ from }) => {
 				const loggedUser = result.user;
 				// console.log('SocialLogin: ', loggedUser.displayName, loggedUser.email);
 				axios
-					.post('http://localhost:5000/users', {
+					.post('https://sports-camp-server-zeta.vercel.app/users', {
 						name: loggedUser.displayName,
 						email: loggedUser.email,
 						image: loggedUser.photoURL,

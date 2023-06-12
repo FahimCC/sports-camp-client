@@ -19,7 +19,9 @@ const ManageUsers = () => {
 
 	const handleInstructor = user => {
 		axios
-			.patch(`http://localhost:5000/users/instructor/${user._id}`)
+			.patch(
+				`https://sports-camp-server-zeta.vercel.app/users/instructor/${user._id}`
+			)
 			.then(data => {
 				if (data.data.modifiedCount) {
 					refetch();
@@ -35,18 +37,22 @@ const ManageUsers = () => {
 	};
 
 	const handleAdmin = user => {
-		axios.patch(`http://localhost:5000/users/admin/${user._id}`).then(data => {
-			if (data.data.modifiedCount) {
-				refetch();
-				Swal.fire({
-					position: 'top-end',
-					icon: 'success',
-					title: `${user.name} is an Admin Now!`,
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			}
-		});
+		axios
+			.patch(
+				`https://sports-camp-server-zeta.vercel.app/users/admin/${user._id}`
+			)
+			.then(data => {
+				if (data.data.modifiedCount) {
+					refetch();
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: `${user.name} is an Admin Now!`,
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+			});
 	};
 
 	return (

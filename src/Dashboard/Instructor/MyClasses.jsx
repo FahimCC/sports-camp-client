@@ -57,7 +57,7 @@ const MyClasses = () => {
 								<td>{clas.className}</td>
 								<td>{clas.price}</td>
 								<td className='text-center'>{clas.availableSeat}</td>
-								<td className='text-center'>{clas.availableSeat}</td>
+								<td className='text-center'>{clas.enrollCount}</td>
 								<td className='text-center'>
 									{clas.status === 'pending' ? (
 										<span className='btn-custom border-yellow-400 text-yellow-400'>

@@ -188,7 +188,10 @@ const Register = () => {
 							)}
 						</div>
 						<div className='form-control mt-6'>
-							<button type='submit' className='btn bg-first hover:bg-second'>
+							<button
+								type='submit'
+								className='btn bg-first hover:bg-second text-black'
+							>
 								Register
 							</button>
 						</div>

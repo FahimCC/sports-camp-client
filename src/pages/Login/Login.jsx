@@ -131,7 +131,7 @@ const Login = () => {
 							</label>
 						</div>
 						<div className='form-control mt-6'>
-							<button type='submit' className='btn bg-first hover:bg-second'>
+							<button type='submit' className='btn bg-first hover:bg-second text-black'>
 								Login
 							</button>
 						</div>
@@ -139,7 +139,7 @@ const Login = () => {
 					<SocialLogin from={from} />
 					<p className='text-center my-4'>
 						Don't have an account?
-						<Link to='/register' className='text-primary hover:underline pl-2'>
+						<Link to='/register' className='text-primary hover:underline pl-2 '>
 							Register
 						</Link>
 					</p>

@@ -1,18 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Logo from '../../components/Logo';
 import useUser from '../../hooks/UseUser';
-import useTheme from '../../hooks/useTheme';
 
 const Navbar = () => {
-	const [theme, setTheme] = useState();
 	const { user, logOut } = useUser();
 
-	const handleThemeChange = event => {
-		setTheme(event.target.checked);
+	// const [theme, setTheme] = useState();
+	// const handleThemeChange = event => {
+	// 	setTheme(event.target.checked);
+	// };
+	// useTheme(theme);
+
+	// use theme from local storage if available or set light theme
+	const [theme, setTheme] = useState(
+		localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
+	);
+
+	// update state on toggle
+	const handleToggle = e => {
+		if (e.target.checked) {
+			setTheme('forest');
+		} else {
+			setTheme('lemonade');
+		}
 	};
-	useTheme(theme);
+
+	// set theme state in localstorage on mount & also update localstorage on state change
+	useEffect(() => {
+		localStorage.setItem('theme', theme);
+		const localTheme = localStorage.getItem('theme');
+		// add custom data-theme attribute to html tag required to update theme using DaisyUI
+		document.querySelector('html').setAttribute('data-theme', localTheme);
+	}, [theme]);
+
 	const navigationBar = (
 		<>
 			<li className=' hover:text-primary'>
@@ -75,7 +97,12 @@ const Navbar = () => {
 					<div className='navbar-end'>
 						<label className='swap swap-rotate pr-2 text-lg md:text-2xl'>
 							{/* this hidden checkbox controls the state */}
-							<input onChange={handleThemeChange} type='checkbox' />
+							<input
+								type='checkbox'
+								onChange={handleToggle}
+								// show toggle image based on localstorage theme
+								checked={theme === 'lemonade' ? false : true}
+							/>
 
 							<BsSun className='swap-on' />
 							<BsMoon className='swap-off' />

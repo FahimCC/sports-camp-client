@@ -104,7 +104,7 @@ const Classes = () => {
 						/>
 						<div className='rounded-lg absolute top-0 left-0 right-0 bg-black bg-opacity-50 w-full h-72 flex items-center justify-center text-warning '>
 							<div className='flex flex-col items-center'>
-								<h1 className=' text-3xl md:text-5xl font-bold mb-4'>
+								<h1 className=' text-2xl md:text-4xl font-bold mb-4'>
 									{clas.className}
 								</h1>
 								<p>
